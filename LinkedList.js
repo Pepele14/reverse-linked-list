@@ -1,3 +1,5 @@
+const Node = require("./Node");
+
 class LinkedList {
   constructor() {
     this.head = null;
@@ -10,12 +12,19 @@ class LinkedList {
       return;
     }
     let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+  display() {
+    let current = this.head;
     const values = [];
     while (current) {
       values.push(current.data);
       current = current.next;
     }
-    console.log(valus.join(" -> "));
+    console.log(values.join(" -> "));
   }
 
   reverse() {
@@ -31,3 +40,5 @@ class LinkedList {
     this.head = prev;
   }
 }
+
+module.exports = LinkedList;
